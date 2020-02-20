@@ -24,6 +24,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
  */
 public class MobileProject {
 
+    //subject to change
     public static AndroidDriver androidDriver = null;
     static int MILISECONDS = 10000;
 
