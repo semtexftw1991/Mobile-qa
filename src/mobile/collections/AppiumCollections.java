@@ -49,6 +49,7 @@ public class AppiumCollections {
         //Getting screen dimensions of device
         Dimension windowSize = new Driver().driver.manage().window().getSize();
         //Touch starting point and relase point (height)
+        //Calculation accounts for roughly 10 & 80% of the height (change depending on screen size and testing needs)
         int startPoint = windowSize.height / 10;
         int releasePoint = windowSize.height / 80;
         //center of the screen (width)
@@ -62,6 +63,7 @@ public class AppiumCollections {
         //Getting screen dimensions of device
         Dimension windowSize = new Driver().driver.manage().window().getSize();
         //Touch starting point and relase point (height)
+        //Calculation accounts for roughly 10 & 80% of the height (change depending on screen size and testing needs)
         int releasePoint = windowSize.height / 10;
         int startPoint = windowSize.height / 80;
         //center of the screen (width)
