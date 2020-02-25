@@ -1,4 +1,4 @@
-package mobile.project;
+package mobile.base;
 
 import io.appium.java_client.android.AndroidDriver;
 
@@ -8,7 +8,7 @@ import io.appium.java_client.android.AndroidDriver;
  */
 public class Driver extends DriverSetup {
 
-    protected AndroidDriver driver;
+    public AndroidDriver driver;
 
     public Driver() {
         this.driver = super.getDriver();

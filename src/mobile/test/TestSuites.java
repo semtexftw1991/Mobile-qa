@@ -1,4 +1,4 @@
-package mobile.project;
+package mobile.test;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
@@ -13,7 +13,7 @@ public class TestSuites {
     //Scroll up and down screen
     
     @Test
-    public static void sampleTest() {
+    public void sampleTest() {
         //implement tests here
 
         assertEquals("", "");

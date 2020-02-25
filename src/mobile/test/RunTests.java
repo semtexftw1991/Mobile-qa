@@ -1,4 +1,4 @@
-package mobile.project;
+package mobile.test;
 
 import java.net.MalformedURLException;
 import org.junit.runner.JUnitCore;
