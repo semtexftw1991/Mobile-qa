@@ -1,11 +1,13 @@
 package mobile.collections;
 
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.offset.PointOption;
 import mobile.base.Driver;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,24 +20,24 @@ public class AppiumCollections {
     static private WebDriverWait wait;
     static int miliseconds = 30000;
 
-    public static void waitForElement(AndroidDriver driver, WebElement element) {
+    public static void waitForElement(AndroidDriver driver, MobileElement element) {
         wait = new WebDriverWait(driver, miliseconds);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public static void typeText(AndroidDriver driver, WebElement element, String value) {
+    public static void typeText(AndroidDriver driver, MobileElement element, String value) {
         waitForElement(driver, element);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.sendKeys(value);
     }
 
-    public static void clickOn(AndroidDriver driver, WebElement element) {
+    public static void clickOn(AndroidDriver driver, MobileElement element) {
         waitForElement(driver, element);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
 
-    public static String getText(AndroidDriver driver, WebElement element) {
+    public static String getText(AndroidDriver driver, MobileElement element) {
         waitForElement(driver, element);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         return element.getText();
@@ -68,8 +70,8 @@ public class AppiumCollections {
         int startPoint = windowSize.height / 80;
         //center of the screen (width)
         int width = windowSize.width / 2;
-
         //scrown down action
         new TouchAction(new Driver().driver).press(PointOption.point(width, startPoint)).moveTo(PointOption.point(width, releasePoint)).release().perform();
     }
+    
 }
