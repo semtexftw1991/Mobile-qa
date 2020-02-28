@@ -8,7 +8,7 @@ import io.appium.java_client.android.AndroidDriver;
  */
 public class Driver extends DriverSetup {
 
-    public static AndroidDriver driver;
+    public AndroidDriver driver;
 
     public Driver() {
         this.driver = super.getDriver();
