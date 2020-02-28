@@ -6,8 +6,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.offset.PointOption;
 import mobile.base.Driver;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -44,34 +42,40 @@ public class AppiumCollections {
     }
 
     public static void openApp(String appName) {
-        new Driver().driver.findElementByAccessibilityId("appName").click();
+        new Driver().driver.findElementByAccessibilityId(appName).click();
     }
 
-    public static void scrollDown() {
-        //Getting screen dimensions of device
+    private static Dimension getScreenDimensions() {
         Dimension windowSize = new Driver().driver.manage().window().getSize();
-        //Touch starting point and relase point (height)
-        //Calculation accounts for roughly 10 && 80% of the height (change depending on screen size and testing needs)
-        int startPoint = windowSize.height / 10;
-        int releasePoint = windowSize.height / 80;
-        //center of the screen (width)
-        int width = windowSize.width / 2;
-
-        //scrown down action
-        new TouchAction(new Driver().driver).press(PointOption.point(width, startPoint)).moveTo(PointOption.point(width, releasePoint)).release().perform();
+        return windowSize;
     }
 
-    public static void scrollUp() {
-        //Getting screen dimensions of device
-        Dimension windowSize = new Driver().driver.manage().window().getSize();
-        //Touch starting point and relase point (height)
-        //Calculation accounts for roughly 10 && 80% of the height (change depending on screen size and testing needs)
-        int releasePoint = windowSize.height / 10;
-        int startPoint = windowSize.height / 80;
-        //center of the screen (width)
-        int width = windowSize.width / 2;
-        //scrown down action
-        new TouchAction(new Driver().driver).press(PointOption.point(width, startPoint)).moveTo(PointOption.point(width, releasePoint)).release().perform();
+    private static int startingPoint() {
+        Dimension window = getScreenDimensions();
+        int startPoint = window.height / 10;
+        return startPoint;
+    }
+
+    private static int releasePoint() {
+        Dimension window = getScreenDimensions();
+        int startPoint = window.height / 80;
+        return startPoint;
     }
     
+    private static int width() {
+        Dimension window = getScreenDimensions();
+        int startPoint = window.width / 2;
+        return startPoint;
+    }
+
+    public static void scrollDownScreen(AndroidDriver driver) {
+        //scrown down action
+        new TouchAction(driver).press(PointOption.point(width(), startingPoint())).moveTo(PointOption.point(width(), releasePoint())).release().perform();
+    }
+
+    public static void scrollUpScreen(AndroidDriver driver) {
+        //scrown down action
+        new TouchAction(driver).press(PointOption.point(width(), startingPoint())).moveTo(PointOption.point(width(), releasePoint())).release().perform();
+    }
+
 }
